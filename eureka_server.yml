@@ -1,0 +1,27 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+#    指定eureka服务器ip
+    hostname: localhost
+  client:
+#    是否将服务注册到eureka服务器，由于本身是eureka服务器，就设置为false
+    register-with-eureka: false
+#    是否从eureka服务器中获取服务信息，eureka服务器本身不需要从中获取信息，所以设置为false
+    fetch-registry: false
+#    指定eureka服务器地址
+    serverUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+#    关闭eureka客户端“短时间丢失过多”的保护
+    enable-self-preservation: false
+
+#配置spring security
+#spring:
+#  security:
+#    basic:
+#      enabled: true
+#    user:
+#      name: xc
+#      password: 123456
